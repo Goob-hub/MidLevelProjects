@@ -1,7 +1,51 @@
+*{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
 body{
     min-height: 100vh;
-    min-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: black
+}
+
+.playing-area, .btn-container{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.btn-container{
+    flex-direction: column;
+}
+
+.btn{
+    transition: .2s linear;
+    padding: 10px;
+    margin: 5px;
+    background-color: orangered;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.card-image{
+    height: 100px;
+    width: 75px;
+    margin: 20px;
+}
+
+.hide{
+    transition: .2s linear;
+    display: none;
+    opacity: 0%;
+}
+
+.btn:hover{
+    cursor: pointer;
+    transition: .2s linear;
+    background-color: rgb(212, 57, 0);
 }
