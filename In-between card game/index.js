@@ -17,6 +17,8 @@
 
     if they win they gain $5
 
+    if the last card they are dealt is the same card as one they have previously been dealt they will instead lose $10 if they chose yes in between
+
     the goal is to reach $50
 
     if they reach 50 they win but if they hit 0 they lose
@@ -48,13 +50,15 @@ const cardData = {
 const cards = Object.keys(cardData);
 
 let selectedCards = [];
+let isAceHigh = true;
+let curCard = 0;
 
-let curCard = selectedCards.length;
-
-function getRandomCard(){
-    let randomCard = cards[randNum(cards.length)];
-    //let randomCard = "A";
-    selectedCards.push(randomCard);
+function getRandomCards(amount){
+    for (let i = 0; i < amount; i++) {
+        let randomCard = cards[randNum(cards.length)];
+        // let randomCard = "A";
+        selectedCards.push(randomCard);
+    }
 }
 
 function randNum(max){
@@ -62,7 +66,6 @@ function randNum(max){
 }
 
 function gameLogic(){
-    
     if(curCard === 2){
         inBetweenBtn.classList.remove("hide");
         notInBetweenBtn.classList.remove("hide");
@@ -70,48 +73,64 @@ function gameLogic(){
 
     if(curCard === 1){
         addCardToScreen();
-        getRandomCard();
         curCard++;
     }
 
     if(selectedCards[curCard] === "A" && curCard === 0){
         highBtn.classList.remove("hide");
         lowBtn.classList.remove("hide");
-        getRandomCard();
         addCardToScreen();
         curCard++;
-    } else {
+    } else if(selectedCards[curCard] !== "A" && curCard === 0) {
         for (let i = 0; i < 2; i++) {
-            getRandomCard();
             addCardToScreen();
             curCard++;
         }
         inBetweenBtn.classList.remove("hide");
         notInBetweenBtn.classList.remove("hide");
     }
-
-    console.log(curCard);
-
 }
 
 function addCardToScreen(){
-    
     let cardContainer = cardContainers[curCard];
+
+    console.log(cardContainer, curCard);
     let image = cardContainer.children[0];
     
     image.classList.add("card-image");
     image.src = `./imgs/${selectedCards[curCard]}.png`;
-
-        
     
 }
 
 dealBtn.addEventListener("click", (e) => {
+    getRandomCards(3);
     gameLogic();
     dealBtn.classList.add("hide");
 });
 
 
+highBtn.addEventListener("click", (e) => {
+    isAceHigh = true;
+    highBtn.classList.add("hide");
+    lowBtn.classList.add("hide");
+    inBetweenBtn.classList.remove("hide");
+    notInBetweenBtn.classList.remove("hide");
+    gameLogic();
+});
 
+lowBtn.addEventListener("click", (e) => {
+    isAceHigh = false;
+    highBtn.classList.add("hide");
+    lowBtn.classList.add("hide");
+    inBetweenBtn.classList.remove("hide");
+    notInBetweenBtn.classList.remove("hide");
+    gameLogic();
+});
 
+inBetweenBtn.addEventListener("click", (e) => {
+    
+});
 
+notInBetweenBtn.addEventListener("click", (e) => {
+
+})
