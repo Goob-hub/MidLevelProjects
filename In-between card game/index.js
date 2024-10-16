@@ -111,11 +111,22 @@ function gameLogic(){
 }
 
 function finishHand(){
+    let range = [selectedCardsValues[0], selectedCardsValues[1]];
+    range.sort((a,b) => a - b);
+
+    let least = range[0];
+    let greatest = range[1];
+    let lastCard = selectedCardsValues[selectedCardsValues.length - 1];
+
     inBetweenBtn.classList.add("hide");
     foldBtn.classList.add("hide");
     addCardToScreen();
 
-
+    if(lastCard > least && lastCard < greatest){
+        console.log("You Win!");
+    } else {
+        console.log("You Lose!");
+    }
 }
 
 function resetHand(){
@@ -172,7 +183,6 @@ lowBtn.addEventListener("click", (e) => {
 
 inBetweenBtn.addEventListener("click", (e) => {
     assignCardValues();
-    console.log(selectedCardsValues);
     finishHand();
 });
 
