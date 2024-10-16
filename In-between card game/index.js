@@ -115,17 +115,34 @@ function finishHand(){
     foldBtn.classList.add("hide");
     addCardToScreen();
 
-    
+
+}
+
+function resetHand(){
+    //Reseting Values
+    selectedCards.length = 0;
+    selectedCardsValues.length = 0;
+    isAceHigh = true;
+    curCard = 0;
+    //Resetting Classes
+    inBetweenBtn.classList.add("hide");
+    foldBtn.classList.add("hide");
+    dealBtn.classList.remove("hide");
+    //Resetting HTML Elements
+    cardContainers.forEach(card => {
+        let cardImage = card.children[0];
+        cardImage.src = "";
+        card.classList.add("hide");
+    });
 }
 
 function addCardToScreen(){
     let cardContainer = document.querySelector(`.card-${curCard}`);
-
     let image = cardContainer.children[0];
     
     image.classList.add("card-image");
+    cardContainer.classList.remove("hide");
     image.src = `./imgs/${selectedCards[curCard]}.png`;
-    
 }
 
 dealBtn.addEventListener("click", (e) => {
