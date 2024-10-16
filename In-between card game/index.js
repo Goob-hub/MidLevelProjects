@@ -27,8 +27,8 @@
 const dealBtn = document.querySelector(".deal-btn");
 const highBtn = document.querySelector(".high-btn");
 const lowBtn = document.querySelector(".low-btn");
-const inBetweenBtn = document.querySelector(".in-between");
-const notInBetweenBtn = document.querySelector(".not-in-between");
+const inBetweenBtn = document.querySelector(".in-between-btn");
+const foldBtn = document.querySelector(".fold-btn");
 const playingArea = document.querySelector(".playing-area");
 const cardContainers = document.querySelectorAll(".card-container");
 
@@ -50,6 +50,7 @@ const cardData = {
 const cards = Object.keys(cardData);
 
 let selectedCards = [];
+let selectedCardsValues = [];
 let isAceHigh = true;
 let curCard = 0;
 
@@ -61,6 +62,24 @@ function getRandomCards(amount){
     }
 }
 
+function assignCardValues(){
+    for(i = 0; i < selectedCards.length; i++){
+        let card = selectedCards[i];
+        let value;
+        if(card === "A" && i === 0 && isAceHigh){
+            value = cardData[card]["High"];
+        } else if(card === "A" && i === 0 && !isAceHigh) {
+            value = cardData[card]["Low"];
+        } else if(card === "A"){
+            value = cardData[card]["High"];
+        } else {
+            value = cardData[card]
+        }
+
+        selectedCardsValues.push(value);
+    }
+}
+
 function randNum(max){
     return Math.floor(Math.random() * max);
 }
@@ -68,7 +87,7 @@ function randNum(max){
 function gameLogic(){
     if(curCard === 2){
         inBetweenBtn.classList.remove("hide");
-        notInBetweenBtn.classList.remove("hide");
+        foldBtn.classList.remove("hide");
     }
 
     if(curCard === 1){
@@ -87,14 +106,21 @@ function gameLogic(){
             curCard++;
         }
         inBetweenBtn.classList.remove("hide");
-        notInBetweenBtn.classList.remove("hide");
+        foldBtn.classList.remove("hide");
     }
 }
 
-function addCardToScreen(){
-    let cardContainer = cardContainers[curCard];
+function finishHand(){
+    inBetweenBtn.classList.add("hide");
+    foldBtn.classList.add("hide");
+    addCardToScreen();
 
-    console.log(cardContainer, curCard);
+    
+}
+
+function addCardToScreen(){
+    let cardContainer = document.querySelector(`.card-${curCard}`);
+
     let image = cardContainer.children[0];
     
     image.classList.add("card-image");
@@ -114,7 +140,7 @@ highBtn.addEventListener("click", (e) => {
     highBtn.classList.add("hide");
     lowBtn.classList.add("hide");
     inBetweenBtn.classList.remove("hide");
-    notInBetweenBtn.classList.remove("hide");
+    foldBtn.classList.remove("hide");
     gameLogic();
 });
 
@@ -123,14 +149,16 @@ lowBtn.addEventListener("click", (e) => {
     highBtn.classList.add("hide");
     lowBtn.classList.add("hide");
     inBetweenBtn.classList.remove("hide");
-    notInBetweenBtn.classList.remove("hide");
+    foldBtn.classList.remove("hide");
     gameLogic();
 });
 
 inBetweenBtn.addEventListener("click", (e) => {
-    
+    assignCardValues();
+    console.log(selectedCardsValues);
+    finishHand();
 });
 
-notInBetweenBtn.addEventListener("click", (e) => {
-
+foldBtn.addEventListener("click", (e) => {
+    resetHand();
 })
