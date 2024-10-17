@@ -27,10 +27,12 @@
 const dealBtn = document.querySelector(".deal-btn");
 const highBtn = document.querySelector(".high-btn");
 const lowBtn = document.querySelector(".low-btn");
-const inBetweenBtn = document.querySelector(".in-between-btn");
 const foldBtn = document.querySelector(".fold-btn");
+const inBetweenBtn = document.querySelector(".in-between-btn");
+const playAgainBtn = document.querySelector(".play-again-btn");
 const playingArea = document.querySelector(".playing-area");
 const cardContainers = document.querySelectorAll(".card-container");
+const resultTxt = document.querySelector(".result");
 
 const cardData = {
     "2": 2,
@@ -123,10 +125,13 @@ function finishHand(){
     addCardToScreen();
 
     if(lastCard > least && lastCard < greatest){
-        console.log("You Win!");
+        resultTxt.textContent = "You Win!";
     } else {
-        console.log("You Lose!");
+        resultTxt.textContent = "You Lose!";
     }
+
+    resultTxt.classList.remove("hide");
+    playAgainBtn.classList.remove("hide");
 }
 
 function resetHand(){
@@ -139,6 +144,8 @@ function resetHand(){
     inBetweenBtn.classList.add("hide");
     foldBtn.classList.add("hide");
     dealBtn.classList.remove("hide");
+    playAgainBtn.classList.add("hide");
+    resultTxt.classList.add("hide");
     //Resetting HTML Elements
     cardContainers.forEach(card => {
         let cardImage = card.children[0];
@@ -162,6 +169,9 @@ dealBtn.addEventListener("click", (e) => {
     dealBtn.classList.add("hide");
 });
 
+playAgainBtn.addEventListener("click", (e) => {
+    resetHand();
+});
 
 highBtn.addEventListener("click", (e) => {
     isAceHigh = true;

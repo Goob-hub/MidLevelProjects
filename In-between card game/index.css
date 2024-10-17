@@ -17,6 +17,11 @@ body{
     justify-content: center;
 }
 
+.result{
+    color: white;
+    font-size: 2em;
+}
+
 .btn-container{
     flex-direction: column;
 }
