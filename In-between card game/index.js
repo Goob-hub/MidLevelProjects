@@ -1,27 +1,11 @@
 //The to do list
 
 /* 
-    So far I have created game logic for dealing cards and keeping track of the speicic logic neccesary to deal the correct amount of cards if the player is dealt an ace first or not dealt an ace first
-
-    Make sure the card added to selected cards is an object that contains its value and key, and to make sure that the aces are of correct value
-
-    Next we must make sure the player is able to declare high or low on the ace if that is the first card they are dealt
-
-    We also have to finish functionality for the player to decide whether or not the next card they are dealt will be in between their current card set
-
-    Add winning or losing result feedback on screen for player
-
-    Next figure out a money system for the player, possibly start them with $20
-
-    if they lose a bet on the card being in between they lose $5
-
-    if they win they gain $5
-
-    if the last card they are dealt is the same card as one they have previously been dealt they will instead lose $10 if they chose yes in between
-
     the goal is to reach $50
 
     if they reach 50 they win but if they hit 0 they lose
+    
+    All I have to do now is code the funcionality for when the player reaches 50 or 0 dollars and completley end the game and give the player the feedback based on their result
 */
 
 const dealBtn = document.querySelector(".deal-btn");
@@ -33,6 +17,7 @@ const playAgainBtn = document.querySelector(".play-again-btn");
 const playingArea = document.querySelector(".playing-area");
 const cardContainers = document.querySelectorAll(".card-container");
 const resultTxt = document.querySelector(".result");
+const playerCashTxt = document.querySelector(".player-cash");
 
 const cardData = {
     "2": 2,
@@ -55,6 +40,14 @@ let selectedCards = [];
 let selectedCardsValues = [];
 let isAceHigh = true;
 let curCard = 0;
+
+let curPlayerCash = 20;
+let winCash = 5;
+let loseCash = 5;
+let dupeCardLossCash = 10; 
+let cashGoal = 50;
+
+playerCashTxt.textContent = curPlayerCash;
 
 function getRandomCards(amount){
     for (let i = 0; i < amount; i++) {
@@ -84,6 +77,34 @@ function assignCardValues(){
 
 function randNum(max){
     return Math.floor(Math.random() * max);
+}
+
+function endGame(win){
+    if(win === true){
+        //Do stuff to html/css to tell player they won
+    } else {
+        //Do stuff to html/css to tell player that they losta
+    }
+}
+
+function gameManager(won, duplicate){
+    if(won === true && duplicate === false){
+        curPlayerCash += winCash;
+    } else if(duplicate === true){
+        curPlayerCash -= dupeCardLossCash;
+    } else if(!won && duplicate === false){
+        curPlayerCash -= loseCash;
+    }
+
+    playerCashTxt.textContent = curPlayerCash;
+
+    if(curPlayerCash === cashGoal){
+        endGame(true);
+    }
+
+    if(curPlayerCash <= 0){
+        endGame(false);
+    }
 }
 
 function gameLogic(){
@@ -125,9 +146,14 @@ function finishHand(){
     addCardToScreen();
 
     if(lastCard > least && lastCard < greatest){
-        resultTxt.textContent = "You Win!";
+        resultTxt.textContent = `Congrats, You Won $${winCash}!`;
+        gameManager(true, false);
+    } else if (lastCard === least || lastCard === greatest) {
+        resultTxt.textContent = `DAMN, You Lost $${dupeCardLossCash} Because Of A Duplicate Card!`;
+        gameManager(false, true);
     } else {
-        resultTxt.textContent = "You Lose!";
+        resultTxt.textContent = `Womp Womp, You Lost $${loseCash}`;
+        gameManager(false, false);
     }
 
     resultTxt.classList.remove("hide");
@@ -198,4 +224,4 @@ inBetweenBtn.addEventListener("click", (e) => {
 
 foldBtn.addEventListener("click", (e) => {
     resetHand();
-})
+});

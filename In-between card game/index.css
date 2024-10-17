@@ -8,7 +8,8 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: black
+    color: white;
+    background: url("./imgs/bg.jpg");
 }
 
 .playing-area, .btn-container{
@@ -17,8 +18,13 @@ body{
     justify-content: center;
 }
 
+.player-cash-container{
+    position: absolute;
+    top: 20px;
+}
+
 .result{
-    color: white;
+    text-align: center;
     font-size: 2em;
 }
 
