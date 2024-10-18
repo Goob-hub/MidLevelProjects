@@ -1,13 +1,3 @@
-//The to do list
-
-/* 
-    the goal is to reach $50
-
-    if they reach 50 they win but if they hit 0 they lose
-    
-    All I have to do now is code the funcionality for when the player reaches 50 or 0 dollars and completley end the game and give the player the feedback based on their result
-*/
-
 const dealBtn = document.querySelector(".deal-btn");
 const highBtn = document.querySelector(".high-btn");
 const lowBtn = document.querySelector(".low-btn");
@@ -81,10 +71,13 @@ function randNum(max){
 
 function endGame(win){
     if(win === true){
-        //Do stuff to html/css to tell player they won
+        resultTxt.textContent = `CONGRATS!! You reached $${cashGoal} and beat the game! Refresh the page to play again!`;
     } else {
-        //Do stuff to html/css to tell player that they losta
+        resultTxt.textContent = "YOU SUCK!! You reached $0 and lost all of your money! Refresh the page to play again"
     }
+
+    dealBtn.classList.add("hide");
+    playAgainBtn.classList.add("hide");
 }
 
 function gameManager(won, duplicate){
@@ -98,7 +91,7 @@ function gameManager(won, duplicate){
 
     playerCashTxt.textContent = curPlayerCash;
 
-    if(curPlayerCash === cashGoal){
+    if(curPlayerCash >= cashGoal){
         endGame(true);
     }
 
@@ -139,25 +132,26 @@ function finishHand(){
 
     let least = range[0];
     let greatest = range[1];
-    let lastCard = selectedCardsValues[selectedCardsValues.length - 1];
+    let lastCard = selectedCards[2];
+    let lastCardValue = selectedCardsValues[selectedCardsValues.length - 1];
 
     inBetweenBtn.classList.add("hide");
     foldBtn.classList.add("hide");
+    resultTxt.classList.remove("hide");
+    playAgainBtn.classList.remove("hide");
+
     addCardToScreen();
 
-    if(lastCard > least && lastCard < greatest){
+    if(lastCardValue > least && lastCardValue < greatest){
         resultTxt.textContent = `Congrats, You Won $${winCash}!`;
         gameManager(true, false);
-    } else if (lastCard === least || lastCard === greatest) {
+    } else if (lastCard === selectedCards[0] || lastCard === selectedCards[1]) {
         resultTxt.textContent = `DAMN, You Lost $${dupeCardLossCash} Because Of A Duplicate Card!`;
         gameManager(false, true);
     } else {
         resultTxt.textContent = `Womp Womp, You Lost $${loseCash}`;
         gameManager(false, false);
     }
-
-    resultTxt.classList.remove("hide");
-    playAgainBtn.classList.remove("hide");
 }
 
 function resetHand(){
