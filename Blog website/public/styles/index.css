@@ -1,14 +1,50 @@
 body {
+    min-height: 100vh;
+    margin: 0;
     background-color: #00bf63;
 }
 
-h1{
+h1 {
     font-family: 'Open-sans', sans-serif;
 }
 
-p{
+p {
     font-family: "Libre Baskerville", serif;
     font-style: italic;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 25vh;
+}
+
+header p {
+    font-size: smaller;
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin: 4px;
+}
+
+.title-container{
+    background-color: #f4f4f4;
+    border: solid black 2px;
+    border-radius: 3px;
+    box-shadow: 10px 9px 0px 0px rgba(0,0,0,0.75);
+}
+
+.title-text-container{
+    margin: 10px;
+    padding: 5px 15px;
+}
+
+.container-style{
+    height: 20px;
+    border-bottom: solid black 3px;
 }
 
 .btn{
