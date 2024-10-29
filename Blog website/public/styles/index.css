@@ -30,21 +30,54 @@ header h1 {
     margin: 4px;
 }
 
-.title-container{
+.title-container {
     background-color: #f4f4f4;
     border: solid black 2px;
     border-radius: 3px;
     box-shadow: 10px 9px 0px 0px rgba(0,0,0,0.75);
 }
 
-.title-text-container{
+.title-text-container {
     margin: 10px;
     padding: 5px 15px;
 }
 
-.container-style{
+.container-style {
     height: 20px;
     border-bottom: solid black 3px;
+}
+
+.blog-posts {
+    height: 100%;
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.blog-wrapper {
+    background-color: #f4f4f4;
+    border: solid black 2px;
+    border-radius: 10px;
+    box-shadow: 10px 9px 0px 0px rgba(0,0,0,0.75);
+    padding: 10px;
+    margin: 15px;
+    max-width: 250px;
+    text-align: center;
+}
+
+.btn-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.delete-btn, .edit-btn {
+    border: none;
+    background-color: #f4f4f4;
 }
 
 .btn{
