@@ -1,0 +1,16 @@
+body {
+    background-color: #00bf63;
+}
+
+h1{
+    font-family: 'Open-sans', sans-serif;
+}
+
+p{
+    font-family: "Libre Baskerville", serif;
+    font-style: italic;
+}
+
+.btn{
+    font-family: sans-serif;
+}
