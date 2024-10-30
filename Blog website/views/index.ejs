@@ -6,24 +6,21 @@
         <div class="title-text-container">
             <h1 class="title">Blogo</h1>
             <p class="title-subtext">#1 place to chat about random stuff</p>
+            <form action="create" method="post">
+                <button class="create-post-btn btn">Write your blogo!</button>
+            </form>
         </div>
     </div>
 </header>
 
 <section class="blog-posts">
-    <div class="blog-wrapper">
-        <div class="btn-container">
-            <button class="delete-btn btn">
-                <i class="fa-solid fa-pen"></i>
-            </button>
-            <button class="edit-btn btn">
-                <i class="fa-solid fa-x"></i>
-            </button>
-        </div>
-        <h1 class="blog-title">Why I'm so hungry</h1>
-        <button class="read-blog btn">Read more</button>
-    </div>
-    <%- include("partials/blog post.ejs")  %>
+    <% if(locals.blogs) { %>
+        <% for (let i = 0; i < blogs.length; i++) { const blog = blogs[i]; %>
+            <%- include("partials/blog post.ejs", { title: blog.title, id: blog.id })  %>
+        <% } %>
+    <% } else { %>
+        <h1>There are currently no posts on blogo :(</h1>
+    <% } %>
 </section>
 
 </body>

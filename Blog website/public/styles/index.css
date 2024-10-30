@@ -19,6 +19,7 @@ header {
     justify-content: center;
     text-align: center;
     min-height: 25vh;
+    padding-top: 20px;
 }
 
 header p {
