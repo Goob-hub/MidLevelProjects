@@ -30,6 +30,25 @@ app.get("/", (req, res) => {
     res.render("index.ejs", { blogs: posts });
 });
 
+app.get("/read", (req, res) => {
+    let postId = parseInt(req.query.blogId);
+    let postFound = false;
+    let requestedPost;
+    
+    posts.forEach(post => {
+        if(post.id === postId){
+            postFound = true;
+            requestedPost = post;
+        }
+    });
+
+    if(postFound) {
+        res.render("read.ejs", { blog: requestedPost });
+    } else {
+        res.render("read.ejs");
+    }
+});
+
 app.listen(port, () => {
     console.log("Site live on port 3000");
 })

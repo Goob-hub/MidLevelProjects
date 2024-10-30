@@ -8,7 +8,8 @@
         </button>
     </div>
     <h1 class="blog-title"><%= title %></h1>
-    <form action="read" method="get" id="<%= id %>">
-        <input type="button" value="Read More!">
+    <form action="read" method="get">
+        <input type="hidden" name="blogId" value="<%= id %>" />
+        <input type="submit" value="Read More!" class="read-more-btn btn">
     </form>
 </div>
