@@ -81,10 +81,21 @@ textarea {
 }
 
 .delete-btn, .edit-btn {
+    padding: 5px;
     border: none;
+    transition: .5s linear;
     background-color: #f4f4f4;
+}
+
+.delete-btn:hover, .edit-btn:hover {
+    transition: .5s linear;
+    background-color: #dcdbdb;
 }
 
 .btn{
     font-family: sans-serif;
+}
+
+.btn:hover {
+    cursor: pointer;
 }

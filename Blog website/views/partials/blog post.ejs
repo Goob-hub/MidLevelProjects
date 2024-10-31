@@ -1,11 +1,17 @@
 <div class="blog-wrapper">
     <div class="btn-container">
-        <button class="delete-btn btn">
-            <i class="fa-solid fa-pen"></i>
-        </button>
-        <button class="edit-btn btn">
-            <i class="fa-solid fa-x"></i>
-        </button>
+        <form action="edit" method="get">
+            <input type="hidden" name="blogId" value="<%= id %>" />
+            <button type="submit" class="delete-btn btn">
+                <i class="fa-solid fa-pen"></i>
+            </button>
+        </form>
+        <form action="delete" method="get">
+            <input type="hidden" name="blogId" value="<%= id %>" />
+            <button type="submit" class="edit-btn btn">
+                <i class="fa-solid fa-x"></i>
+            </button>
+        </form>
     </div>
     <h1 class="blog-title"><%= title %></h1>
     <form action="read" method="get">

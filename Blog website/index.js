@@ -6,7 +6,7 @@ const port = 3000;
 
 let posts = [
     {
-        id: 1,
+        id: 0,
         title: "Why im so hungry!",
         text: `Constant feelings of hunger can throw you off your weight loss plan. Why am I always hungry? It seems like you never feel full enough to stop thinking of food or eating. This can be frustrating, especially if you want to lose or maintain a certain weight goal. 
         The first step to managing your weight control problem is to understand why you are always hungry and what you can do to beat constant hunger.
@@ -17,9 +17,14 @@ let posts = [
         Parasites like tapeworms can live in your intestines without you knowing it, until symptoms get worse. Sometimes, the only symptom is constant hunger with failure to gain weight.`
     },
     {
-        id: 2,
+        id: 1,
         title: "Why programming is more addictive than cocaine!",
         text: `Unlike many other tasks where errors can be concealed or go unnoticed, programming has a unique ability to swiftly expose our incorrect mental models. This fast and unforgiving feedback loop can be both daunting and exhilarating, making programming a uniquely addictive pursuit for those who embrace its challenges.`
+    },
+    {
+        id: 2,
+        title: "I really have to use the bathroom right now!",
+        text: `Toilets are commonly made of ceramic (porcelain), concrete, plastic, or wood. Newer toilet technologies include dual flushing, low flushing, toilet seat warming, self-cleaning, female urinals and waterless urinals. Japan is known for its toilet technology. Airplane toilets are specially designed to operate in the air.`
     }
 ];
 
@@ -53,12 +58,33 @@ app.get("/read", (req, res) => {
     }
 });
 
+app.get("/delete", (req, res) => {
+    let postId = parseInt(req.query.blogId);
+
+    posts.splice(postId, 1);
+
+    for (let i = 0; i < posts.length; i++) {
+        const post = posts[i];
+        if(post.id > postId) {
+            post.id -= 1;
+        }
+    }
+
+    res.redirect("/");
+});
+
+app.get("/edit", (req, res) => {
+    console.log(req.query);
+    res.render("edit.ejs");
+});
+
 app.post("/create", (req, res) => {
     let post = req.body;
     posts.push(post);
-    post.id = posts.length;
+    post.id = posts.length - 1;
     res.redirect("/");
 });
+
 
 app.listen(port, () => {
     console.log("Site live on port 3000");
