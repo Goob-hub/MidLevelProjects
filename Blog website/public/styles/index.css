@@ -31,6 +31,10 @@ header h1 {
     margin: 4px;
 }
 
+textarea {
+    resize: none;
+}
+
 .title-container {
     background-color: #f4f4f4;
     border: solid black 2px;

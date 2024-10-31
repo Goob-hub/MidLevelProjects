@@ -30,11 +30,15 @@ app.get("/", (req, res) => {
     res.render("index.ejs", { blogs: posts });
 });
 
+app.get("/create", (req, res) => {
+    res.render("create.ejs");
+});
+
 app.get("/read", (req, res) => {
     let postId = parseInt(req.query.blogId);
     let postFound = false;
     let requestedPost;
-    
+
     posts.forEach(post => {
         if(post.id === postId){
             postFound = true;
@@ -49,6 +53,13 @@ app.get("/read", (req, res) => {
     }
 });
 
+app.post("/create", (req, res) => {
+    let post = req.body;
+    posts.push(post);
+    post.id = posts.length;
+    res.redirect("/");
+});
+
 app.listen(port, () => {
     console.log("Site live on port 3000");
-})
+});
