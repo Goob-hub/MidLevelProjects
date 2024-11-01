@@ -1,13 +1,13 @@
 <div class="blog-wrapper">
     <div class="btn-container">
         <form action="edit" method="get">
-            <input type="hidden" name="blogId" value="<%= id %>" />
+            <input type="hidden" name="id" value="<%= id %>" />
             <button type="submit" class="delete-btn btn">
                 <i class="fa-solid fa-pen"></i>
             </button>
         </form>
         <form action="delete" method="get">
-            <input type="hidden" name="blogId" value="<%= id %>" />
+            <input type="hidden" name="id" value="<%= id %>" />
             <button type="submit" class="edit-btn btn">
                 <i class="fa-solid fa-x"></i>
             </button>
@@ -15,7 +15,7 @@
     </div>
     <h1 class="blog-title"><%= title %></h1>
     <form action="read" method="get">
-        <input type="hidden" name="blogId" value="<%= id %>" />
+        <input type="hidden" name="id" value="<%= id %>" />
         <input type="submit" value="Read More!" class="read-more-btn btn">
     </form>
 </div>

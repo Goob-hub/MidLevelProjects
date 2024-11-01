@@ -1,5 +1,17 @@
 <%- include("partials/header.ejs")  %>
 
+<% if(locals.blogPost) {%>
+    <form action="edit" method="post">
+        <input type="hidden" name="id" value="<%= blogPost.id %>" />
+        <input required name="title" type="text" value="<%= blogPost.title %>" placeholder="Title..." maxlength="50">
+        <textarea required name="text" placeholder="Text..." rows="10" cols="60" maxlength="1000">
+            <%= blogPost.text %>
+        </textarea>
+        <input type="submit" value="Submit Edit!">
+    </form>
+<% } else {%>
+    <h1> ERROR GETTING ORIGINAL POST DATA </h1>
+<% } %>
 
 </body>
 </html>

@@ -1,5 +1,8 @@
 import express from "express";
 import bodyParser from "body-parser";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 const port = 3000;
@@ -40,7 +43,7 @@ app.get("/create", (req, res) => {
 });
 
 app.get("/read", (req, res) => {
-    let postId = parseInt(req.query.blogId);
+    let postId = parseInt(req.query.id);
     let postFound = false;
     let requestedPost;
 
@@ -59,7 +62,7 @@ app.get("/read", (req, res) => {
 });
 
 app.get("/delete", (req, res) => {
-    let postId = parseInt(req.query.blogId);
+    let postId = parseInt(req.query.id);
 
     posts.splice(postId, 1);
 
@@ -74,8 +77,10 @@ app.get("/delete", (req, res) => {
 });
 
 app.get("/edit", (req, res) => {
-    console.log(req.query);
-    res.render("edit.ejs");
+    let postId = parseInt(req.query.id);
+    let post = posts[postId];
+
+    res.render("edit.ejs", { blogPost: post });
 });
 
 app.post("/create", (req, res) => {
@@ -85,6 +90,12 @@ app.post("/create", (req, res) => {
     res.redirect("/");
 });
 
+app.post("/edit", (req, res) => {
+    let editedPost = req.body;
+    editedPost.id = parseInt(editedPost.id);
+    posts[editedPost.id] = editedPost;
+    res.redirect("/");
+});
 
 app.listen(port, () => {
     console.log("Site live on port 3000");
