@@ -1,8 +1,14 @@
 <%- include("partials/header.ejs")  %>
-
+<link rel="stylesheet" href="/styles/index.css">
+<link rel="stylesheet" href="/styles/readMore.css">
+<title>Blogo</title>
+</head>
+<body>
 <% if(locals.blog) {%>
     <h1><%= blog.title %></h1>
-    <p><%= blog.text %></p>
+    <div class="content-container">
+        <p class="content-text"><%= blog.text %></p>
+    </div>
 <% } else {%>
     <h1>Error getting/handling blog post data :(</h1>
 <% } %>

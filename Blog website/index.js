@@ -11,13 +11,7 @@ let posts = [
     {
         id: 0,
         title: "Why im so hungry!",
-        text: `Constant feelings of hunger can throw you off your weight loss plan. Why am I always hungry? It seems like you never feel full enough to stop thinking of food or eating. This can be frustrating, especially if you want to lose or maintain a certain weight goal. 
-        The first step to managing your weight control problem is to understand why you are always hungry and what you can do to beat constant hunger.
-
-        Part 1: Why Am I Always Hungry? 1. Fast Metabolism
-        Some people burn more calories in a small amount of time. According to one study, more that 30% of the general population have fast metabolism, which allows them to burn up to 400 more calories per day than most people do. If your metabolism is fast, you will tend to …show more content…
-
-        Parasites like tapeworms can live in your intestines without you knowing it, until symptoms get worse. Sometimes, the only symptom is constant hunger with failure to gain weight.`
+        text: `Constant feelings of hunger can throw you off your weight loss plan. Why am I always hungry? It seems like you never feel full enough to stop thinking of food or eating. This can be frustrating, especially if you want to lose or maintain a certain weight goal. The first step to managing your weight control problem is to understand why you are always hungry and what you can do to beat constant hunger. Part 1: Why Am I Always Hungry? 1. Fast Metabolism Some people burn more calories in a small amount of time. According to one study, more that 30% of the general population have fast metabolism, which allows them to burn up to 400 more calories per day than most people do. If your metabolism is fast, you will tend to get parasites like tapeworms can live in your intestines without you knowing it, until symptoms get worse. Sometimes, the only symptom is constant hunger with failure to gain weight.`
     },
     {
         id: 1,

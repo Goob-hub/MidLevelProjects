@@ -1,0 +1,26 @@
+.big-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 99%;
+}
+
+.title-input {
+    font-size: 2em;
+    width: 80%;
+    margin-bottom: 20px;
+}
+
+.text-input {
+    font-size: 1.2em;
+    max-width: 80%;
+    margin-bottom: 20px;
+}
+
+.title-input, .text-input {
+    border: solid black 3px;
+    border-radius: 5px;
+    box-shadow: 6px 7px 0px 0px rgba(0,0,0,0.75);
+}
+

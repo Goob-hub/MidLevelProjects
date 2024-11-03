@@ -3,6 +3,11 @@ body {
     max-width: 100%;
     margin: 0;
     background-color: #00bf63;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 h1 {
@@ -34,6 +39,10 @@ header h1 {
 
 textarea {
     resize: none;
+}
+
+.content-text {
+    font-family: "Work Sans", sans-serif;
 }
 
 .title-container {
@@ -113,6 +122,13 @@ textarea {
     align-items: center;
     justify-content: center;
     font-family: sans-serif;
+    background-color: black;
+    color: whitesmoke;
+    border: none;
+    padding: 10px;
+    font-size: 1em;
+    font-family: "Work Sans", sans-serif;
+    border-radius: 3px;
 }
 
 .btn:hover {

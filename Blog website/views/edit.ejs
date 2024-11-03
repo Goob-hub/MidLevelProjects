@@ -1,17 +1,21 @@
 <%- include("partials/header.ejs")  %>
-
-<% if(locals.blogPost) {%>
-    <form action="edit" method="post">
-        <input type="hidden" name="id" value="<%= blogPost.id %>" />
-        <input required name="title" type="text" value="<%= blogPost.title %>" placeholder="Title..." maxlength="50">
-        <textarea required name="text" placeholder="Text..." rows="10" cols="60" maxlength="1000">
-            <%= blogPost.text %>
-        </textarea>
-        <input type="submit" value="Submit Edit!">
-    </form>
-<% } else {%>
-    <h1> ERROR GETTING ORIGINAL POST DATA </h1>
-<% } %>
+<link rel="stylesheet" href="/styles/form.css">
+<link rel="stylesheet" href="/styles/index.css">
+<title>Blogo</title>
+</head>
+<body>
+    <% if(locals.blogPost) {%>
+        <form class="big-form" action="edit" method="post">
+            <input type="hidden" name="id" value="<%= blogPost.id %>" />
+            <input class="title-input" required name="title" type="text" value="<%= blogPost.title %>" placeholder="Title..." maxlength="50">
+            <textarea class="text-input content-text" required name="text" placeholder="Text..." rows="10" cols="60" maxlength="1000">
+                <%= blogPost.text %>
+            </textarea>
+            <input class="btn" type="submit" value="Submit Edit!">
+        </form>
+    <% } else {%>
+        <h1> ERROR GETTING ORIGINAL POST DATA </h1>
+    <% } %>
 
 </body>
 </html>

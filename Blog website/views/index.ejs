@@ -1,27 +1,30 @@
 <%- include("partials/header.ejs")  %>
-
-<header>
-    <div class="title-container">
-        <div class="container-style"></div>
-        <div class="title-text-container">
-            <h1 class="title">Blogo</h1>
-            <p class="title-subtext">#1 place to chat about random stuff</p>
-            <form action="create" method="get">
-                <button class="create-post-btn btn">Create your blogo!</button>
-            </form>
+<link rel="stylesheet" href="styles/index.css">
+<title>Blogo</title>
+</head>
+<body>
+    <header>
+        <div class="title-container">
+            <div class="container-style"></div>
+            <div class="title-text-container">
+                <h1 class="title">Blogo</h1>
+                <p class="title-subtext">#1 place to chat about random stuff</p>
+                <form action="create" method="get">
+                    <button class="create-post-btn btn">Create your blogo!</button>
+                </form>
+            </div>
         </div>
-    </div>
-</header>
+    </header>
 
-<section class="blog-posts">
-    <% if(locals.blogs) { %>
-        <% for (let i = 0; i < blogs.length; i++) { const blog = blogs[i]; %>
-            <%- include("partials/blog post.ejs", { title: blog.title, id: blog.id })  %>
+    <section class="blog-posts">
+        <% if(locals.blogs) { %>
+            <% for (let i = 0; i < blogs.length; i++) { const blog = blogs[i]; %>
+                <%- include("partials/blog post.ejs", { title: blog.title, id: blog.id })  %>
+            <% } %>
+        <% } else { %>
+            <h1>There are currently no posts on blogo :(</h1>
         <% } %>
-    <% } else { %>
-        <h1>There are currently no posts on blogo :(</h1>
-    <% } %>
-</section>
+    </section>
 
 </body>
 </html>

@@ -1,10 +1,15 @@
 <%- include("partials/header.ejs")  %>
+<link rel="stylesheet" href="/styles/form.css">
+<link rel="stylesheet" href="/styles/index.css">
+<title>Blogo</title>
+</head>
+<body>
 
-<form action="create" method="post">
-    <input required name="title" type="text" placeholder="Title..." maxlength="50">
-    <textarea required name="text" id="" placeholder="Text..." rows="10" cols="60" maxlength="1000"></textarea>
-    <input type="submit" value="Post!">
-</form>
+    <form class="big-form" action="create" method="post">
+        <input class="title-input" name="title" type="text" placeholder="Title..." maxlength="50">
+        <textarea class="text-input content-text" required name="text" id="" placeholder="Text..." rows="10" cols="60" maxlength="1000"></textarea>
+        <input class="btn" type="submit" value="Post!">
+    </form>
 
 </body>
 </html>
