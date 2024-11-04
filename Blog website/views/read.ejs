@@ -9,6 +9,9 @@
     <div class="content-container">
         <p class="content-text"><%= blog.text %></p>
     </div>
+    <form action="/" method="get">
+        <input class="btn home-btn" type="submit" value="Home">
+    </form>
 <% } else {%>
     <h1>Error getting/handling blog post data :(</h1>
 <% } %>

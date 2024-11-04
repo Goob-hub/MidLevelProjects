@@ -131,6 +131,10 @@ textarea {
     border-radius: 3px;
 }
 
+.home-btn {
+    margin: 20px;
+}
+
 .btn:hover {
     cursor: pointer;
 }

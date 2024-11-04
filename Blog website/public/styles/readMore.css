@@ -3,7 +3,8 @@ h1, .content-container {
     border: solid black 3px;
     border-radius: 5px;
     box-shadow: 6px 7px 0px 0px rgba(0,0,0,0.75);
-    width: 80%;
+    min-width: 30%;
+    max-width: 80%;
     padding: 10px;
 }
 
